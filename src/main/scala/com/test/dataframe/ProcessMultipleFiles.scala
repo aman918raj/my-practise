@@ -10,7 +10,7 @@ object ProcessMultipleFiles {
 
     SetWinUtils.configureWinutils()
     val spark = SparkSession.builder().master("local").appName("test").getOrCreate()
-    val readAllFiles = spark.sparkContext.wholeTextFiles("C:\\Users\\araj34\\Documents\\Learning\\spark\\files1", 5)
+    val readAllFiles = spark.sparkContext.wholeTextFiles("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\files1", 5)
     println(readAllFiles.getNumPartitions)
     val dataRdd = readAllFiles.map(x => x._2)
     val dataMapRdd = dataRdd
