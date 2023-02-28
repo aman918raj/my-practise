@@ -13,7 +13,7 @@ object ReadFolder {
       .enableHiveSupport()
       .getOrCreate()
 
-    val df = spark.read.option("header", "true").csv("C:\\Users\\araj34\\Documents\\Learning\\spark\\files1")
+    val df = spark.read.option("header", "true").csv("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\files1")
     df.show()
     println(df.rdd.getNumPartitions)
   }
