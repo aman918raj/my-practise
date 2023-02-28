@@ -22,7 +22,7 @@ object HiveTest {
     spark.sql(
       """create table if not exists mydb.emp
         |(id int, name string, salary int) partitioned by(dept_id int) row format delimited fields terminated by ',' stored as textFile""".stripMargin)
-    val df = spark.read.option("header", "true").csv("C:\\Users\\araj34\\Documents\\Learning\\spark\\files\\emp.csv")
+    val df = spark.read.option("header", "true").csv("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\files\\emp.csv")
       .select(col("id").cast("int"), col("name"), col("salary").cast("int"), col("dept_id").cast("int"))
       .repartition(col("dept_id"))
     df.write.mode("overwrite").insertInto("mydb.emp")
