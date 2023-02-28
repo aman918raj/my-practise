@@ -7,7 +7,7 @@ object WordCountDF {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().master("local").appName("word count").getOrCreate()
-    val df = spark.read.text("C:\\Users\\araj34\\Documents\\Learning\\spark\\files\\emp.csv")
+    val df = spark.read.text("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\files\\emp.csv")
     val column_name = df.columns(0)
     val df_split = df.filter(!col(column_name).startsWith("id")).withColumn(column_name, split(col(column_name), ","))
     val df_split_explode = df_split.withColumn(column_name, explode(col(column_name)))
