@@ -31,10 +31,10 @@ object UpdatePartitionHive {
       .filter(col("file_name") === file_name)
       .drop("file_name")
       .withColumn("salary", when(col("name") === "A", 1000).otherwise(col("salary")))
-    df2.write.mode("overwrite").format("csv").save("C:\\Users\\araj34\\Documents\\Learning\\spark\\emp_out")
+    df2.write.mode("overwrite").format("csv").save("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\emp_out")
 
     //change the value of salary when name = "A"
-    val df3 = spark.read.csv("C:\\Users\\araj34\\Documents\\Learning\\spark\\emp_out").withColumn("file_name", input_file_name())
+    val df3 = spark.read.csv("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\emp_out").withColumn("file_name", input_file_name())
     val file_name2 = df3.select("file_name").first()(0)
     val exact_file_name = FilenameUtils.getName(file_name2.toString)
     println(exact_file_name)
@@ -42,7 +42,7 @@ object UpdatePartitionHive {
     val hadoopConf = new Configuration()
     val hdfs = FileSystem.get(hadoopConf)
 
-    val srcPath = new Path(s"C:\\Users\\araj34\\Documents\\Learning\\spark\\emp_out\\$exact_file_name")
+    val srcPath = new Path(s"C:\\Users\\<user_name>\\Documents\\Learning\\spark\\emp_out\\$exact_file_name")
     val destPath = new Path(file_path)
 
     //hdfs.copyToLocalFile(srcPath, destPath)
