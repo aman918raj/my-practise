@@ -20,7 +20,7 @@ object HiveBucketing {
     spark.sql(
       """create table if not exists mydb.emp_part_bucket
         |(id int, name string, salary int) partitioned by(dept_id int) CLUSTERED BY(name) INTO 3 BUCKETS ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE""".stripMargin)
-    val df = spark.read.option("header", "true").csv("C:\\Users\\araj34\\Documents\\Learning\\spark\\files\\emp.csv")
+    val df = spark.read.option("header", "true").csv("C:\\Users\\<user_name>\\Documents\\Learning\\spark\\files\\emp.csv")
       .select(col("id").cast("int"), col("name"), col("salary").cast("int"), col("dept_id").cast("int"))
       .repartition(col("dept_id"))
 
